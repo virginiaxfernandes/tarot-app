@@ -1,0 +1,8 @@
+node_modules/
+.expo/
+.DS_Store
+android/
+ios/
+.env
+npm-debug.log
+yarn-error.log
