@@ -9,7 +9,7 @@ import {
   Image,
   RefreshControl,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { SafeAreaView } from "react-native";
 
 type TarotCard = {
   name: string;
@@ -19,8 +19,7 @@ type TarotCard = {
   image: string | null;
 };
 
-const API_URL = "https://rws-cards-api.herokuapp.com/api/v1/cards";
-const IMAGE_BASE = "https://www.sacred-texts.com/tarot/pkt/img/";
+const API_URL = "https://tarot-api-esoteric.vercel.app/api/cards";
 
 export default function App() {
   const [cards, setCards] = useState<TarotCard[]>([]);
@@ -41,6 +40,7 @@ export default function App() {
       if (!res.ok) throw new Error(`Erro de rede: ${res.status}`);
 
       const data = await res.json();
+
       setCards(data.cards || []);
     } catch (e) {
       if (e instanceof Error) setError(e.message);
@@ -87,7 +87,7 @@ export default function App() {
             <Image
               source={{
                 uri: item.image
-                  ? IMAGE_BASE + item.image
+                  ? item.image
                   : "https://via.placeholder.com/300x500?text=Sem+Imagem",
               }}
               style={styles.cardImage}
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: "100%",
-    height: 240,
+    height: 250,
     resizeMode: "contain",
     marginBottom: 12,
   },
@@ -165,4 +165,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-
