@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import {
   ActivityIndicator,
   FlatList,
-  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
@@ -10,6 +9,7 @@ import {
   Image,
   RefreshControl,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 type TarotCard = {
   name: string;
@@ -63,7 +63,7 @@ export default function App() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Tarot App 🔮</Text>
+      <Text style={styles.title}>Tarot App</Text>
 
       <TextInput
         placeholder="Buscar carta..."
@@ -84,7 +84,6 @@ export default function App() {
         }
         renderItem={({ item }) => (
           <View style={styles.cardBox}>
-            {/* Imagem da carta (com Fallback) */}
             <Image
               source={{
                 uri: item.image
@@ -94,13 +93,10 @@ export default function App() {
               style={styles.cardImage}
             />
 
-            {/* Nome */}
             <Text style={styles.cardTitle}>{item.name}</Text>
 
-            {/* Descrição */}
             <Text style={styles.cardDesc}>{item.desc}</Text>
 
-            {/* Significados */}
             <Text style={styles.meaningText}>
               <Text style={{ fontWeight: "700" }}>Significado (normal): </Text>
               {item.meaning_up}
@@ -169,3 +165,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
+
