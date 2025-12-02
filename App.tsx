@@ -22,7 +22,7 @@ type TarotCard = {
 };
 
 const API_URL = "https://tarotapi.dev/api/v1/cards";
-const IMAGE_BASE_URL = "https://tarotapi.dev"; 
+const IMAGE_BASE_URL = "https://tarotapi.dev";
 
 export default function App() {
   const [allCards, setAllCards] = useState<TarotCard[]>([]); 
@@ -126,9 +126,9 @@ export default function App() {
         renderItem={({ item }) => (
           <View style={styles.cardBox}>
             <Image
-              source={{
-                uri: item.image
-                  ? `${IMAGE_BASE_URL}${item.image}` 
+  source={{
+       uri: item.image
+       ? `${IMAGE_BASE_URL}${item.image}` 
                   : "https://via.placeholder.com/300x500?text=Sem+Imagem",
               }}
               style={styles.cardImage}
